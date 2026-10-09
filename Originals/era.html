@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<title>New Era</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.6em;
+  font-size: medium;
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+/* Animated Gradient Text */
+.cl1 {
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  
+  /* Gradient setup */
+  background: linear-gradient(45deg, red, blue, green, yellow, red);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* Animations applied: Color flowing + Sliding up */
+  animation: colorShift 6s ease infinite, slideUp 1s ease-out forwards;
+}
+
+textarea {
+  width: 100%;
+  height: auto;
+  resize: none;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input::placeholder {
+  opacity: 1;
+}
+
+input:focus {
+  border: 1px dotted blue;
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+  font-size: medium;
+}
+
+.cl2 {
+  padding: 20px;
+  text-align: center;
+  background-color: pink;
+  color: orangered;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.cl3 {
+  display: none;
+  background-color: lightblue;
+  text-align: center;
+  color: #578255;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Keyframes for text color movement */
+@keyframes colorShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keyframes for the entry slide-in */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+<script>
+function fun() {
+  event.preventDefault();
+  const b = document.querySelector(".cl3");
+  const f = document.querySelector(".cl2");
+  f.style.display = "none";
+  b.style.display = "block";
+}
+</script>
+</head>
+<body>
+<main>
+  <div class="cl1">
+    <p>
+      Hare krishna!<br>
+      I hope this surprise may mark a new era in your--Matru household life!
+    </p>
+  </div>
+  <div class="cl2">
+    <p>Matru, please give your feedback:</p>
+    <form oninput="fun()">
+      <label for="feed">Feedback:</label><br>
+      <input type="text" id="feed" placeholder="Feedback here...">
+      <br>
+    </form>
+  </div>
+  <div class="cl3">
+    <p>Thanks for your FeedBack, matru!</p><br>
+    <em>Feedback Received!</em>
+  </div>
+</main>
+<footer>
+  <p>Made with love ~ Hari</p>
+</footer>
+</body>
+</html>
