@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <title>Age Calculator</title>
+    <style>
+        * {box-sizing: border-box;}
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow: auto;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+input[type=reset] {margin-top: 5%; width: inherit;}
+        header {
+            width: 100%;
+            padding: 10px;
+        }
+
+        nav {
+            max-width: 800px;
+            margin: 5% auto;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333333;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allows items to wrap nicely on very small screens */
+            border: 2.95pt solid lightblue;
+        }
+
+        ul li {
+            margin: 5px;
+        }
+
+        ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li a:hover {
+            background-color: orange;
+        }
+
+        #age {
+            background-color: orange;
+        }
+
+        ul:hover #age {
+            background-color: #333333;
+        }
+
+        #age:hover {background-color: orange;}
+        main {
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem); /* Fluid typography */
+            color: #fab;
+            margin-bottom: 10px;
+        }
+
+        h1:hover {
+            animation: ani1 3s ease-in-out;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="date"]:focus {
+            border-color: orange;
+        }
+
+        button {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 18px;
+        }
+input[type=reset] {background-color: blue;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px; }
+        button:hover{
+            background-color: #e69500;
+        }
+
+        output {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: -0.023em;
+        }
+
+        @keyframes ani1 {
+            10% {
+                color: #34567e;
+                border-color: #34567f;
+            }
+            50% {
+                color: #fab;
+                border-color: transparent;
+            }
+            100% {
+                color: #fab;
+                border-color: transparent;
+            }
+        }
+
+        /* Responsive adjustments for mobile screens */
+        @media (max-width: 480px) {
+            ul {
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 10px 0;
+            }
+
+            ul li {
+                width: 90%;
+                margin: 2px 0;
+            }
+
+            ul li a {
+                width: 100%;
+            }
+
+            main {
+                padding: 15px;
+                margin-top: 15px auto;
+            }
+        }
+    </style>
+    
+    <script>
+function ios()  {
+event.preventDefault();
+consoloe.log("Welcome to world of Calculators! Try calculating your Age, play with numbers using Numeric Calculator, estimate and convert unists and have Fun! Visit us again! See you");}
+function st() {
+let st = document.getElementById("out");
+out.style.display = "none";
+const form = document.getElementById("form");
+form.reset();}
+        function cal() {
+            const dateInput = document.getElementById('date_input').value;
+            const outputElement = document.getElementById('out');
+
+            if (!dateInput) {
+                return;
+            }
+
+            const birthDate = new Date(dateInput);
+            const today = new Date();
+
+            let years = today.getFullYear() - birthDate.getFullYear();
+            let months = today.getMonth() - birthDate.getMonth();
+            let days = today.getDate() - birthDate.getDate();
+
+            if (days < 0) {
+                months--;
+                const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+                days += lastMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            outputElement.style.display = 'block';
+            outputElement.textContent = `You are ${years} years, ${months} months, and ${days} days old.`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="cal.html#numcal">Numeric Calculator</a></li>
+                <li><a id="age" href="#agecal">Age Calculator</a></li>
+                <li><a href="unit.html#unitcal">Units Converter</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="agecal">
+        <h1>Let's calculate your age!</h1>
+        <p>Fill in the following details:</p>
+        <form id="form" onsubmit="cal(); return false;">
+            <label for="date_input">
+                Select your birthday here to calculate your age:
+            </label>
+            <input placeholder="Birthday here..."
+                type="date" 
+                name="date" 
+                id="date_input" 
+                required>
+            <br>
+            <button type="submit">
+                Calculate Age
+            </button><br>
+<input type="reset" value="Reset" onclick="st()">
+            <output id="out" style="display: none;"></output>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<title>Numeric_Calculator</title>
+<meta charset="UTF-8">
+
+<style>
+
+body {
+
+text-align: center;
+ 
+font-family: sans-serif, serif;
+ 
+padding: 5px;
+ 
+box-sizing: border-box;
+ letter-spacing: -0.023em;
+ 
+font-size: medium;
+ 
+font-weight: normal;
+
+ line-height: 1.6em;
+ 
+ display: flex;
+ 
+justify-content: center;
+    
+flex-direction: column;
+    align-items: center;
+    
+gap: 24px;
+    transition: all 0.3s ease;
+}
+
+#cal-container {
+    box-shadow: 2px 0.5px 1px 1.5px aliceblue;
+    border-radius: 10px;
+    padding: 15px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+#cal {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4, 50px);
+    font-weight: bold;
+    font-size: medium;
+    background-color: rgb(240,240,240);
+}
+#cal > #display {
+    grid-column: span 4;
+    text-align: right;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    background-color: lightblue;
+    border: 1px solid #ccc;
+}
+.numbtn {
+    border-radius: 80%; 
+    padding: 10px; 
+    background-color: hsl(25, 25%, 10%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.numbtn:hover { background-color: pink; }
+.numbtn:active { background-color: green; }
+.opbtn {
+    border-radius: 80%; 
+    padding: 10px; 
+    font-weight: normal;
+    font-size: medium; 
+    background-color: orange; 
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.opbtn:hover { background-color: #456; }
+.opbtn:active { background-color: #56efa4; }
+
+fieldset {
+    border: 2px dotted blue;
+    border-radius: 10px;
+}
+form.custom-form {
+    text-align: left; 
+    border-radius: 5px; 
+    border: 0.5px dashed #323635; 
+    box-shadow: 0.5px 1px 1.5px 2px pink; 
+    margin: 10px; 
+    padding: 10px;
+}
+#ebtn {
+    background: mediumseagreen; 
+    border-radius: 5%; 
+    padding: 10px; 
+    color: white; 
+    font-weight: bold;
+    grid-row: span 2;
+    grid-column: 4;
+}
+#zbtn {
+    grid-column: span 2;
+    border-radius: 20px;
+}
+legend { font-weight: normal; color: black; }
+
+input:disabled {
+    background-color: gray;
+    padding: 5px 15px;
+    margin: auto;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+input[type=reset], input[type=button] {
+    background-color: orange;
+    padding: 5px 15px;
+    margin: auto;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 
+</style>
+<link rel="styesheet
+" href="style.css">
+</head>
+<body oncopy="alert('YOU CANNOT COPY TEXT!');" oncut="alert('YOU CANNOT CUT TEXT!');">
+
+<header>
+    <nav>
+        <div>
+            <ul>
+                <li><a href="index.html#agecal">Age Calculator</a></li>
+                <li><a href="#numcal" id="age">Numeric Calculator</a></li>
+                <li><a href="unit.html#unit_cal">Units Converter</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main id="numcal">
+    <section>
+        <div>
+            <p><em>Welcome to my Calculator! Wanna Customize?
+            <button type="button" title="Customize?" onclick="toggleSetting()">Personalize &#9881;</button> 
+            <time id="time">--:--:--</time></em></p>
+        </div>
+    </section>
+    <br>
+
+    <!-- CALCULATOR UI -->
+    <section id="cal-container">
+        <div id="cal">
+            <input id="display" readonly placeholder="0">
+            <button type="button" class="opbtn">C</button>
+            <button type="button" class="opbtn">&#8999;</button>
+            <button type="button" class="opbtn">/</button>
+            <button type="button" class="opbtn">*</button>
+            <button type="button" class="numbtn">7</button>
+            <button type="button" class="numbtn">8</button>
+            <button type="button" class="numbtn">9</button>
+            <button type="button" class="opbtn">+</button>
+            <button type="button" class="numbtn">4</button>
+            <button type="button" class="numbtn">5</button>
+            <button type="button" class="numbtn">6</button>
+            <button type="button" class="opbtn">-</button>
+            <button type="button" class="numbtn">1</button>
+            <button type="button" class="numbtn">2</button>
+            <button type="button" class="numbtn">3</button>
+            <button type="button" id="ebtn" class="numbtn">=</button>
+            <button type="button" id="zbtn" class="numbtn">0</button>
+            <button type="button" class="numbtn">.</button>
+        </div>
+    </section>
+
+    <!-- SETTINGS UI -->
+    <section id="hidden" style="display: none;">
+        <div>
+            <h2 style="float: left; text-align: left;">Settings</h2> 
+            <i style="float: right; font-style: normal; font-size: large; cursor:pointer; margin-top: 20px;" onclick="back()">&#x2715; Back</i>
+            <div style="clear:both;"></div>
+        </div>
+        <form oninput="sett()" id="form" class="custom-form">
+            <fieldset>
+                <legend>Buttons Settings</legend>
+                <label for="btnbgco">Select buttons' background-color:</label>
+                <input type="color" id="btnbgco" value="#1a1a1a"><br><br>
+                
+                <label for="btntco">Select desired text color:</label>
+                <input type="color" id="btntco" value="#ffffff"><br><br>
+
+                <label for="btnthick">Select text thickness:</label>
+                <input type="range" min="100" max="900" id="btnthick" value="700">
+                <strong id="disthi">700</strong>
+                <div><h3 id="disthid">Sample text</h3></div>
+            </fieldset> 
+            <br>
+            <fieldset> 
+                <legend>Calculator Settings</legend>
+                <div>
+                    <label for="calbgco">Calculator background color:</label>
+                    <input type="color" id="calbgco" value="#f0f0f0">
+                </div>
+                <br>
+                <label for="calalign">Calculator alignment:</label>
+                <select id="calalign">
+                    <option value="center" selected>Center</option>
+                    <option value="right">Right</option>
+                    <option value="left">Left</option>
+                </select><br><br>
+                
+                <input type="reset" id="resetBtn" value="Reset to Default" onclick="setTimeout(sett, 10)">
+                <input type="button" id="submitBtn" value="Done" onclick="back()" disabled> 
+            </fieldset>
+        </form>
+    </section>
+</main>
+
+<script>
+    // --- 1. CALCULATOR MATH LOGIC ---
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll("#cal button");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const val = button.innerText;
+
+            if (val === "C") {
+                display.value = ""; // Clear
+            } else if (val === "⌫") {
+                display.value = display.value.slice(0, -1); // Delete last character
+            } else if (val === "=") {
+                try {
+                    // Calculate the math equation
+                    if(display.value !== "") {
+                        display.value = eval(display.value); 
+                    }
+                } catch (e) {
+                    display.value = "Error";
+                }
+            } else {
+                // Ignore if error is currently showing
+                if (display.value === "Error") display.value = ""; 
+                display.value += val; // Add number/operator to display
+            }
+        });
+    });
+
+    // --- 2. PERSONALIZATION SETTINGS LOGIC ---
+    const submitBtn = document.getElementById("submitBtn");
+    const calco = document.getElementById("calbgco");
+    const cal_al = document.getElementById("calalign");
+    const btnco = document.getElementById("btntco");
+    const btnthi = document.getElementById("btnthick");
+    const btnthidis = document.getElementById("disthi");
+    const btnthidisplay = document.getElementById("disthid");
+    const cals = document.getElementById("cal-container");
+    const btnbgco = document.getElementById("btnbgco");
+    const hid = document.getElementById("hidden");
+    const nbtns = document.querySelectorAll(".numbtn"); 
+
+    function sett() {
+        // Apply settings to number buttons
+        nbtns.forEach(btn => {
+            btn.style.backgroundColor = btnbgco.value;
+            btn.style.fontWeight = btnthi.value;
+            btn.style.color = btnco.value;
+        });
+
+        // Update sample text
+        btnthidisplay.style.color = btnco.value;
+        btnthidisplay.style.fontWeight = btnthi.value;
+        btnthidis.innerText = btnthi.value;
+        
+        // Update calculator background
+        document.getElementById("cal").style.backgroundColor = calco.value;
+        
+        // Handle alignment
+        const alignment = cal_al.value;
+        if (alignment === "center") {
+            document.body.style.alignItems = "center";
+        } else if (alignment === "left") {
+            document.body.style.alignItems = "flex-start";
+        } else if (alignment === "right") {
+            document.body.style.alignItems = "flex-end";
+        }
+
+        // Enable the done button
+        submitBtn.removeAttribute("disabled");
+    }
+
+    function toggleSetting() { 
+        hid.style.display = "block";
+        cals.style.display = "none";
+    }
+
+    function back() {
+        hid.style.display = "none";
+        cals.style.display = "inline-block";
+    }
+</script>
+</body>
+</html>

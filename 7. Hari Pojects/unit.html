@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<base target="_blank">
+<title {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  background-color: #333333;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2.95px solid lightblue;
+}
+ul li {float: left;}
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ul li a:hover {background-color: orange;}
+#age {background: orange;}
+ul:hover #age {background: #333333;}
+#age:hover {background: orange;}
+nav {margin-bottom: 10%;}
+h1 {
+text-align: center; 
+font-size: large; 
+color: #fab;}
+h1:hover {animation: ani1 ease-in-out 3s; }
+@keyframes ani1 {
+  10% {color: #34567e; border: 2px solid #34567f;}
+ 20%
+body {overflow: auto;}
+nav {
+width: 100%; 
+max-width: 800px; 
+margin: 20px auto;}
+main {
+width: 90vw; 
+max-width: 600px; 
+margin-top: 1px;}
+.nav2 span {
+display: block;
+flex-direction: row;
+gap: 20%;
+color: #467584;
+font-size: 1rem;
+width: 100vw;
+margin-right: 20%;
+}
+.nav2 {
+display: flex;
+gap: 20px;
+}
+.nav2 > span:active:not(.active) {
+text-decoration-color: green;
+text-decoration: underline;
+transition: text-decoration .5s ease-in;
+animation: under ease-in-out 1s;
+}
+@keyframes under {
+from {
+left: 0;
+}
+to {
+left: 27px;
+}
+}
+.toolbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  background-color: #453873;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2.95px solid green;
+}
+</style>
+</head>
+<body>
+
+<header>
+
+<nav>
+        
+<div>
+            
+<ul>
+ 
+<li><a href="index.html#agecal">Age Calculator</a></li>
+   
+<li><a href="unit_cal" id="age">Units Converter</a></li>
+             
+<li><a href="cal.html#numcal">Numeric Calculator</a></li>
+                           
+</ul>
+ 
+ </div>
+    
+</nav>
+
+</header>
+
+<main id="unit_cal">
+
+<section>
+<div class="toolbar">
+<ul>
+<li>Length</li>
+<li>Volume</li>
+<li>Mass</li>
+</ul>
+</div>
+</section>
+<section id="leng">
+<div>
+<form oninput="leng()">
+<label for="cmi">Enter distance in centimetres: </label>
+<input type="range"  id="cmi"min="0" max="100" value="0" placeholder="0">
+<i id="cmid">0</i>
+</form>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+</section>
+</main>
+</body>
+</html>
+

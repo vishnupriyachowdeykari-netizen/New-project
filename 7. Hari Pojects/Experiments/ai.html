@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First AI App</title>
+    <!-- Import Brain.js from a free CDN -->
+    <script src="https://unpkg.com/brain.js"></script>
+</head>
+<body>
+    <h1>My First JavaScript AI</h1>
+    <p>Check your browser console (F12) to see the AI make a prediction!</p>
+
+    <script>
+        // 1. Create the neural network
+        const net = new brain.NeuralNetwork();
+
+        // 2. Train the AI with data 
+        // (Teaching it: bright RGB colors need dark text, dark RGB colors need light text)
+        net.train([
+            { input: { r: 0.0, g: 0.0, b: 0.0 }, output: { light: 1 } }, // Black -> Light text
+            { input: { r: 1.0, g: 1.0, b: 1.0 }, output: { dark: 1 } },  // White -> Dark text
+            { input: { r: 0.4, g: 0.6, b: 0.1 }, output: { light: 1 } }  // Greenish -> Light text
+        ]);
+
+        // 3. Ask the AI to make a prediction on a new color it hasn't seen before
+        const result = net.run({ r: 0.8, g: 0.4, b: 0.0 }); // An orange-ish color
+        
+        console.log("AI Prediction:", result);
+    </script>
+</body>
+</html>
